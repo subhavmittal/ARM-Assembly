@@ -6,24 +6,23 @@ There are 5 other files apart from sort.s
 2. compare.s : contains the function to compare 2 strings
 3. UsefulFunctions.s : contains some helper functions
 4. merge.s : Contains the merge function
-5. test3.s : contains the test program
-sort.s
- The function mergesort takes 4 inputs –
- Pointer to the unsorted list
- Size Of the unsorted list
- Duplicate removal option
- Comparison mode
- All of these are passed through the stack. The exact locations in the stack are mentioned in detail using comments in sort.s The function produces 2 outputs-
- Pointer to the sorted list (in r0)
-SizesSize of the sorted list (in r1)
-Program Logic
-The Algorithm behind the implementation is to divide the input list into 2 parts and sort them separately ; then merge them together to form the sorted list.
- For the recursive method, a base case where size is 1 is trivial to solve (already solved)
- Managing the stack and storing and loading values from it is key to this implementation
- Registers r4-r12 and the link register are initially stored in the stack
- Input list size is loaded from the stack. If it is less than or equal to 1, then the input list pointer and size are simply moved to registers r0 and r1 and the function returns
- If size is greater than 1, the other input parameters are loaded from stack
- Input parameters for sorting the first half of the list are computed and passed through the stack
+5. test3.s : contains the test program sort.s
+ 6.The function mergesort takes 4 inputs –
+ 7.Pointer to the unsorted list
+ 8.Size Of the unsorted list
+ 9.Duplicate removal option
+ 10.Comparison mode
+ 11.All of these are passed through the stack. The exact locations in the stack are mentioned in detail using comments in sort.s The function produces 2 outputs-
+ 12.Pointer to the sorted list (in r0)
+13.Size of the sorted list (in r1)
+14.Program Logic
+15.The Algorithm behind the implementation is to divide the input list into 2 parts and sort them separately ; then merge them together to form the sorted list.
+ 16.For the recursive method, a base case where size is 1 is trivial to solve (already solved)
+ 17.Managing the stack and storing and loading values from it is key to this implementation
+ 18.Registers r4-r12 and the link register are initially stored in the stack
+ 19.Input list size is loaded from the stack. If it is less than or equal to 1, then the input list pointer and size are simply moved to registers r0 and r1 and the function returns
+ 20.If size is greater than 1, the other input parameters are loaded from stack
+ 21.Input parameters for sorting the first half of the list are computed and passed through the stack
  Size is Arithmetic/logical right shift of total list size, Pointer is the same)
  The mergesort function is called. The output in r0,r1 is copied to r8,r9 and the stack space of 16 bytes which was allocated in the previous step for sorting the first half of the list is reclaimed by incrementing sp by #16
  The same process is repeated for the second half of the list
